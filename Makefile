@@ -17,7 +17,7 @@ run:
 	sudo docker run -d -h local.apache-stanza.redirect -v /opt/apache-stanza.redirect/apachelogs:/var/log/apache2 --name="apache-stanza.redirect" aoki/apache-stanza.redirect
 
 runtest:
-	sudo docker run -d -h local.apache-stanza.redirect -p 90:80 -v /opt/apache-stanza.redirect/tmp:/var/www/apache-stanza.redirect.org/app/tmp -v /mnt/jenkins/workspace/apache-stanza.redirect:/tmp/apache-stanza.redirect.org -v /opt/apache-stanza.redirect/apachelogs:/var/log/apache2 --link glyspacesquid_bluetree:test.apache-stanza.redirect.org --link stanza_bluetree:stanza.apache-stanza.redirect.org --name="apache-stanza.redirect" aoki/apache-stanza.redirect_test
+	sudo docker run -d -h local.apache-stanza.redirect -v /opt/apache-stanza.redirect/apachelogs:/var/log/apache2 --name="apache-stanza.redirect" aoki/apache-stanza.redirect_test
 
 runbeta:
 	sudo docker run -d -h local.apache-stanza.redirect -p 91:80 --link glyspace_bluetree:test.apache-stanza.redirect.org --link beta.apache-stanza.redirect:rdf.apache-stanza.redirect.org --name="apache-stanza.redirect" -v /opt/beta.apache-stanza.redirect/apachelogs:/var/log/apache2 --link stanza_bluetree:stanza.apache-stanza.redirect.org --name="beta.apache.apache-stanza.redirect" aoki/apache-stanza.redirect
