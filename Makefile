@@ -4,12 +4,6 @@ build:
 buildrev:
 	sudo docker build -t aoki/apache-stanza.redirect_20150715 .
 
-builddev:
-	sudo docker build -f Dockerfile.dev -t aoki/apache-stanza.redirect_dev .
-
-buildtest:
-	sudo docker build -f Dockerfile.test -t aoki/apache-stanza.redirect_test .
-
 buildnc:
 	sudo docker build --no-cache -t aoki/apache-stanza.redirect .
 
@@ -17,7 +11,7 @@ run:
 	sudo docker run -d -h local.apache-stanza.redirect -v /opt/apache-stanza.redirect/apachelogs:/var/log/apache2 --name="apache-stanza.redirect" aoki/apache-stanza.redirect
 
 runtest:
-	sudo docker run -d -h local.apache-stanza.redirect -v /opt/apache-stanza.redirect/apachelogs:/var/log/apache2 --name="apache-stanza.redirect" aoki/apache-stanza.redirect_test
+	sudo docker run -d -h local.apache-stanza.redirect -v /opt/apache-stanza.redirect/apachelogs:/var/log/apache2 --name="apache-stanza.redirect" aoki/apache-stanza.redirect
 
 runbeta:
 	sudo docker run -d -h local.apache-stanza.redirect -p 91:80 --link glyspace_bluetree:test.apache-stanza.redirect.org --link beta.apache-stanza.redirect:rdf.apache-stanza.redirect.org --name="apache-stanza.redirect" -v /opt/beta.apache-stanza.redirect/apachelogs:/var/log/apache2 --link stanza_bluetree:stanza.apache-stanza.redirect.org --name="beta.apache.apache-stanza.redirect" aoki/apache-stanza.redirect
